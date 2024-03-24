@@ -1,0 +1,49 @@
+﻿
+
+@model BreadcrumbItem
+
+
+<style>
+    .breadcrumb {
+        background-color: #f8f9fa;
+        padding: 10px 15px; /* Increased padding for better spacing */
+        border-radius: 4px;
+        margin-bottom: 15px; /* Increased margin for better separation */
+    }
+
+    .breadcrumb-item {
+        font-size: 16px; /* Slightly larger font size */
+        color: #6c757d;
+        margin-right: 5px; /* Small margin between breadcrumb items */
+    }
+
+    .breadcrumb-item a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .breadcrumb-item.active {
+        color: #343a40;
+        font-weight: bold;
+    }
+</style>
+
+<ol class="breadcrumb float-sm-right">
+    @if (!string.IsNullOrEmpty(Model.Url) && Model.Title != Model.Url)
+    {
+        <li class="breadcrumb-item"><a href="@Model.Url">@Model.Title</a></li>
+    }
+    <li class="breadcrumb-item active">@Model.Url</li>
+</ol>
+
+@* 
+<ol class="breadcrumb float-sm-right">
+    @if (!string.IsNullOrEmpty(Model.Url) && Model.Title != Model.Url)
+    {
+        <li class="breadcrumb-item"><a href="@Model.Url">@Model.Title</a></li>
+    }
+    <li class="breadcrumb-item active">@Model.Url</li>
+</ol> *@
+@* <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="@Model.Url">@Model.Title</a></li>
+</ol> *@
