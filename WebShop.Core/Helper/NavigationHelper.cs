@@ -18,6 +18,12 @@ namespace WebShop.Core.Helper
         /// <returns></returns>
         public static string IsActive(string controller, string action, string currentController,  string currentAction)
         {
+            // Check for null values and return an empty string if any parameter is null
+            if (controller == null || action == null || currentController == null || currentAction == null)
+            {
+                return "";
+            }
+
             return controller.Equals(currentController, StringComparison.OrdinalIgnoreCase) &&
                 action.Equals(currentAction, StringComparison.OrdinalIgnoreCase) ? "active" : "";
         }

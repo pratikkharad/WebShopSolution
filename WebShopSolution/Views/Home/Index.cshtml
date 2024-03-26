@@ -34,10 +34,57 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Person Name</th>
-                                    <th>Email</th>
-                                    <th>Date of Birth</th>
-                                    <th>Phone Number</th>
+                                    <th>
+                                        <a asp-action="Index" asp-route-sortBy="FirstName" asp-route-descending="@(ViewBag.SortBy == "FirstName" && !ViewBag.Descending)">
+                                            Person Name
+                                            <span>
+                                                @if (ViewBag.SortBy == "FirstName" && ViewBag.Descending != null)
+                                                {
+                                                    <i class="fa @(ViewBag.Descending ? "fa-arrow-down" : "fa-arrow-up")" aria-hidden="true"></i>
+                                                }
+                                            </span>
+                                        </a>
+                                    </th>
+
+                                    <!-- Similar blocks for other sorting columns -->
+
+
+                                    <th>
+                                        <a asp-action="Index" asp-route-sortBy="Email" asp-route-descending="@(ViewBag.SortBy == "Email" && !ViewBag.Descending)">
+                                            Email
+                                            <span>
+                                                @if (ViewBag.SortBy == "Email" && ViewBag.Descending != null)
+                                                {
+                                                    <i class="fa @(ViewBag.Descending ? "fa-arrow-down" : "fa-arrow-up")" aria-hidden="true"></i>
+                                                }
+                                            </span>
+                                        </a>
+
+                                    </th>
+                                    <th>
+                                        <a asp-action="Index" asp-route-sortBy="DateOfBirth" asp-route-descending="@(ViewBag.SortBy == "DateOfBirth" && !ViewBag.Descending)">
+                                            Date of Birth
+                                            <span>
+                                                @if (ViewBag.SortBy == "DateOfBirth" && ViewBag.Descending != null)
+                                                {
+                                                    <i class="fa @(ViewBag.Descending ? "fa-arrow-down" : "fa-arrow-up")" aria-hidden="true"></i>
+                                                }
+                                            </span>
+                                        </a>
+
+                                    </th>
+                                    <th>
+                                        <a asp-action="Index" asp-route-sortBy="PhoneNumber" asp-route-descending="@(ViewBag.SortBy == "PhoneNumber" && !ViewBag.Descending)">
+                                            Phone Number
+                                            <span>
+                                                @if (ViewBag.SortBy == "PhoneNumber" && ViewBag.Descending != null)
+                                                {
+                                                    <i class="fa @(ViewBag.Descending ? "fa-arrow-down" : "fa-arrow-up")" aria-hidden="true"></i>
+                                                }
+                                            </span>
+                                        </a>
+
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>

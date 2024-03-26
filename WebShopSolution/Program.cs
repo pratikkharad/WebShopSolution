@@ -11,12 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-
 builder.Services.ConfigureServices(builder.Configuration);
 
 builder.Services.AddSingleton<DapperDBContext>();
-
-
 
 var app = builder.Build();
 
@@ -29,7 +26,6 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 // Forcefull push the application HTTPS request
 app.UseHsts(); // This is rquired middleware with UseHttpsRedirection
 
@@ -38,7 +34,6 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
 
 app.UseEndpoints(WebShop.UI.StartupExtensions.EndpointRouteBuilderExtensions.ConfigureEndpoints);
 

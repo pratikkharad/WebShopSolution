@@ -29,11 +29,20 @@
 </style>
 
 <ol class="breadcrumb float-sm-right">
-    @if (!string.IsNullOrEmpty(Model.Url) && Model.Title != Model.Url)
+  @*   @if (!string.IsNullOrEmpty(Model.Url) && Model.Title != Model.Url)
     {
         <li class="breadcrumb-item"><a href="@Model.Url">@Model.Title</a></li>
     }
-    <li class="breadcrumb-item active">@Model.Url</li>
+    <li class="breadcrumb-item active">@Model.Url</li> *@
+    @if (Model != null && !string.IsNullOrEmpty(Model.Url) && Model.Title != Model.Url)
+    {
+        <li class="breadcrumb-item"><a href="@Model.Url">@Model.Title</a></li>
+    }
+    @if (Model != null && !string.IsNullOrEmpty(Model.Url))
+    {
+        <li class="breadcrumb-item active">@Model.Url</li>
+    }
+
 </ol>
 
 @* 
