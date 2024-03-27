@@ -3,9 +3,10 @@
 $(document).ready(function () {
     $('#loginForm').submit(function (e) {
         e.preventDefault();
+                
         var formData = {
-            UserName: $('#email').val(), // Change 'userName' to 'UserName'
-            Password: $('#password').val() // Change 'password' to 'Password'
+            userName: $('#email').val(), // Change 'userName' to 'UserName'
+            password: $('#password').val() // Change 'password' to 'Password'
         };
 
         sendPostRequest('Login/Index', formData, function (response) {
@@ -19,12 +20,12 @@ $(document).ready(function () {
 
 // Function to sanitize data
 function sanitizeData(data) {
-    if (!isValidEmail(data.UserName)) {
+    if (!isValidEmail(data.userName)) {
         displayErrorMessage('Invalid email format');
         return false;
     }
 
-    if (data.Password.length < 3) {
+    if (data.password.length < 3) {
         displayErrorMessage('Password must be at least 6 characters long');
         return false;
     }

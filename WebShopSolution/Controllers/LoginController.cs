@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Runtime.InteropServices;
 using WebShop.Core.DTO;
 
 namespace WebShop.UI.Controllers
@@ -13,29 +14,43 @@ namespace WebShop.UI.Controllers
             _logger = logger;
         }
 
-        [HttpGet]        
-        public IActionResult Index()
+        [IgnoreAntiforgeryToken]
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
             _logger.LogInformation("Login page is successful get request is recived");
             return View();
         }
 
-        [HttpPost]    
-        public IActionResult Index(LoginDTO loginDTO)
-        {
-            _logger.LogInformation("Login page is successful post request is recived");
+        
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
 
-            // check the model state is valid or not. 
-            if (!ModelState.IsValid)
+        public async Task<IActionResult> Index([FromBody] LoginDTO loginDTO)
+        {            
+            try
             {
-                return View(loginDTO);
+                _logger.LogInformation("Login page is successful post request is recived");
+
+                // check the model state is valid or not. 
+                if (!ModelState.IsValid)
+                {
+                    // If model validation fails, return bad request with validation errors
+                    return BadRequest(ModelState);
+                }
+
+                return Ok("User registered successfully");
             }
+            catch (Exception ex)
+            {
 
+                // Log the exception
+                _logger.LogError(ex, "An error occurred while registering the user");
 
-
-
-
-            return View();
+                // Return a generic error message to the client
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occurred");
+            }
         }
     }
 }

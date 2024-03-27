@@ -22,7 +22,7 @@ namespace WebShop.UI.Configuration.RouteConfiguration
                 );
 
             endpointRoute.MapControllerRoute(
-                name: Login,
+                name: "Home",
                 pattern: "home/index"                
                 );
 

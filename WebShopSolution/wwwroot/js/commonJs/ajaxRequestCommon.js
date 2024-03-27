@@ -1,11 +1,11 @@
 ﻿// ajaxCommon.js (without using sendAjaxRequest)
 
 
-// Function to retrieve anti-forgery token
-function getAntiForgeryToken() {
+
+// Function to get CSRF token from cookie
+function getCSRFToken() {
     return $('input[name="__RequestVerificationToken"]').val();
 }
-
 /**
  * Sends a POST AJAX request.
  * @param {string} url - The URL of the request.
@@ -13,18 +13,19 @@ function getAntiForgeryToken() {
  * @param {function} successCallback - The callback function to handle success response.
  * @param {function} errorCallback - The callback function to handle error response.
  */
-function sendPostRequest(url, data, successCallback, errorCallback) {
+function sendPostRequest(url, data,  successCallback, errorCallback) {
+   
 
     if (!sanitizeData(data)) {
         return; // Stop further processing if data sanitization fails
     }
 
     $.ajax({
-        url: url,
+        url: window.location.href + url,
         type: 'POST',
         contentType: 'application/json',
         headers: {
-            'RequestVerificationToken': getAntiForgeryToken()
+            'X-CSRF-TOKEN': getCSRFToken() // Include CSRF token in request header
         },
         data: JSON.stringify(data),
         success: function (response) {

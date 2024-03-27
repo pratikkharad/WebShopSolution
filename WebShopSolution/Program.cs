@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using Newtonsoft.Json;
 using Shop.Infrastructure.DbContext;
 using System.Text.Json;
+using WebShop.UI.Configuration.Middleware;
 using WebShop.UI.StartupExtensions;
 
 
@@ -37,7 +38,9 @@ app.UseAuthorization();
 
 app.UseEndpoints(WebShop.UI.StartupExtensions.EndpointRouteBuilderExtensions.ConfigureEndpoints);
 
+// Add request logging middleware | This is custom middleware for the check the network request 
+app.UseMiddleware<RequestLoggingMiddleware>();
 
-    
+
 
 app.Run();

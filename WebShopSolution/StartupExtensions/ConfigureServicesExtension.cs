@@ -17,7 +17,10 @@ namespace WebShop.UI.StartupExtensions
         public static IServiceCollection ConfigureServices(this IServiceCollection services, IConfiguration configuration)
         {
             // Add Anti-CSRF Protection
-            services.AddAntiforgery(options => options.HeaderName = "XSRF-TOKEN");
+            services.AddAntiforgery(options => 
+            {
+                options.HeaderName = "X-CSRF-TOKEN";// Custom header name
+            }); 
 
             services.AddScoped<IBreadcrumbService, BreadcrumbService>();
 
