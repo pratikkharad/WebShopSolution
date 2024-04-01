@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebShop.Domain.Entities
+namespace WebShop.Core.Domain.Entities
 {
     public class BreadcrumbItem
     {

@@ -22,16 +22,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WebShop.Core\WebShop.Core.csproj" />
-    <ProjectReference Include="..\WebShop.Infrastructure\WebShop.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <EditorConfigFiles Remove="C:\ProjectFiles\Learning_Project\Git\WebShopSolution\WebShopSolution\.editorconfig" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="C:\ProjectFiles\Learning_Project\Git\WebShopSolution\WebShopSolution\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebShop.Core\WebShop.Core.csproj" />
+    <ProjectReference Include="..\WebShop.Infrastructure\WebShop.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

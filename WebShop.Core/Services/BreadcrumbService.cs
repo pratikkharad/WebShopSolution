@@ -1,5 +1,5 @@
 ﻿using WebShop.Core.ServiceContracts;
-using WebShop.Domain.Entities;
+using WebShop.Core.Domain.Entities;
 
 namespace WebShop.Core.Services
 {

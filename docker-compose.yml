@@ -1,8 +1,0 @@
-version: '3.4'
-
-services:
-  webshop.ui:
-    image: ${DOCKER_REGISTRY-}webshopui
-    build:
-      context: .
-      dockerfile: WebShopSolution\Dockerfile

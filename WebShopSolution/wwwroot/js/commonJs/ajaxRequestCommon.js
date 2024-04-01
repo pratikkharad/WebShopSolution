@@ -16,9 +16,7 @@ function getCSRFToken() {
 function sendPostRequest(url, data,  successCallback, errorCallback) {
    
 
-    if (!sanitizeData(data)) {
-        return; // Stop further processing if data sanitization fails
-    }
+    
 
     $.ajax({
         url: window.location.href + url,

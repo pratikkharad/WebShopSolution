@@ -8,7 +8,6 @@ using System.Data;
 using System.Data.SqlClient;
 using WebShop.Core.Domain.Entities;
 using WebShop.Core.DTO;
-using WebShop.Domain.Entities;
 using WebShop.Domain.RepositoryContract;
 
 namespace WebShop.Infrastructure.Repositorie

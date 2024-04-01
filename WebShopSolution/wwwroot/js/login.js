@@ -9,6 +9,9 @@ $(document).ready(function () {
             password: $('#password').val() // Change 'password' to 'Password'
         };
 
+        if (!sanitizeData(data)) {
+            return; // Stop further processing if data sanitization fails
+        }
         sendPostRequest('Login/Index', formData, function (response) {
             displaySuccessMessage(response.message);
 
