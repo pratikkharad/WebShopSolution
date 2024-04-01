@@ -156,5 +156,34 @@ namespace WebShop.Core.Services
 
             return 0;
         }
+
+        public async Task<PersonResponse> GetPersonsByUserName(LoginDTO loginRequest)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(loginRequest.UserName))
+                {
+                    return null;
+                }
+
+                PersonResponse personResponse = await _personGetterRepoContract.GetPersonsByUserName(loginRequest);
+
+                if (personResponse is null)
+                {
+                    return null;
+                }
+
+                return personResponse;
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                _logger.LogError(ex, "An error occurred while registering the user");                               
+                
+            }
+
+            return null;
+
+        }
     }
 }

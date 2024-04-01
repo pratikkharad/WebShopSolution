@@ -17,6 +17,7 @@ namespace WebShop.Core.DTO
         public string LastName { get; set; } = string.Empty;
         public DateTime? DateOfBirth { get; set; }
         public string Email { get; set; } = string.Empty;
+        public string PasswordHash { get; set; } = string.Empty;
         public string PhoneNumber { get; set; } = string.Empty;
         public int? TotalRecords
         {
@@ -42,6 +43,7 @@ namespace WebShop.Core.DTO
                    && this.LastName == userResponse.LastName
                    && this.DateOfBirth == userResponse.DateOfBirth
                    && this.Email == userResponse.Email
+                   && this.PasswordHash == userResponse.PasswordHash
                    && this.PhoneNumber == userResponse.PhoneNumber
                    && this.TotalRecords == userResponse.TotalRecords;
         }
@@ -71,11 +73,30 @@ namespace WebShop.Core.DTO
                 LastName = person.LastName,
                 DateOfBirth = person.DateOfBirth,
                 Email = person.Email,
+                PasswordHash = person.PasswordHash,
                 PhoneNumber = person.PhoneNumber,
                 TotalRecords = person.TotalRecords
 
                 
             }).ToList();
+        }
+
+        public static PersonResponse ConvertToPerson(Person person)
+        {
+
+            PersonResponse personResponseRequest = new PersonResponse();
+
+            personResponseRequest.UserGuid = person.UserGuid;
+            personResponseRequest.FirstName = person.FirstName;
+            personResponseRequest.LastName = person.LastName;
+            personResponseRequest.DateOfBirth = person.DateOfBirth;
+            personResponseRequest.Email = person.Email;
+            personResponseRequest.PasswordHash = person.PasswordHash;
+            personResponseRequest.PhoneNumber = person.PhoneNumber;
+            personResponseRequest.TotalRecords = person.TotalRecords;
+
+
+            return personResponseRequest ;
         }
     }
 

@@ -6,7 +6,6 @@ using WebShop.UI.Configuration.HealthCheckConfiguration;
 
 
 
-
 namespace WebShop.UI.StartupExtensions
 {
     public static class ConfigureServicesExtension
@@ -34,6 +33,10 @@ namespace WebShop.UI.StartupExtensions
 
             services.AddScoped<IPersonGetterContracts, PersonGetterService>();
             services.AddScoped<IPersonGetterRepoContract, PersonRepository>();
+
+            // User login
+            services.AddScoped<ILoginContracts, LoginService>();
+            
 
 
 

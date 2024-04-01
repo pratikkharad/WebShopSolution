@@ -48,6 +48,13 @@ namespace WebShop.Domain.RepositoryContract
         /// <returns>The count of row</returns>
         Task<int> GetTotalUserCount();
 
+        /// <summary>
+        /// This method use for the get user details based on the username return only matched records.
+        /// </summary>
+        /// <param name="userName">This parameter base base get the records</param>
+        /// <returns>This method return the only one matched records return</returns>
+        Task<PersonResponse> GetPersonsByUserName(LoginDTO loginRequest);
+
 
 
 

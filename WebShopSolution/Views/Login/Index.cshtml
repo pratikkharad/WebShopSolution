@@ -27,7 +27,11 @@
 
                 <form id="loginForm" method="post">
                     @* use for the secure from  *@
-                    @Html.AntiForgeryToken();
+                    @{
+                        @Html.AntiForgeryToken()
+                        ;
+                    }
+                  
                     <div class="input-group mb-3">
                         <input type="email" class="form-control" placeholder="Email" id="email" required>
                         <div class="input-group-append">

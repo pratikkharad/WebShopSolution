@@ -11,7 +11,14 @@ $(document).ready(function () {
 
         sendPostRequest('Login/Index', formData, function (response) {
             displaySuccessMessage(response.message);
-            // Redirect to dashboard or perform other actions
+
+            // Redirect to home/index only when response is successful
+            if (response.success) {
+               
+                window.location.href = '/home/index';
+            }
+           
+
         }, function (xhr, status, error) {
             displayErrorMessage(xhr.responseText);
         });

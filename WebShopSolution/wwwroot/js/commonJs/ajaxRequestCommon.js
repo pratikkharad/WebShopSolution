@@ -32,10 +32,12 @@ function sendPostRequest(url, data,  successCallback, errorCallback) {
             if (typeof successCallback === 'function') {
                 successCallback(response);
             }
+
         },
         error: function (xhr, status, error) {
             if (typeof errorCallback === 'function') {
                 errorCallback(xhr, status, error);
+                alert("An error occurred: " + error);
             }
         }
     });

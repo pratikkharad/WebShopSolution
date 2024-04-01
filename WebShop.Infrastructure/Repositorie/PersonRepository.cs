@@ -223,5 +223,43 @@ namespace WebShop.Infrastructure.Repositorie
 
             return 0;
         }
+
+
+
+        public async Task<PersonResponse> GetPersonsByUserName(LoginDTO loginDTO)
+        {
+            try
+            {
+                using (var connection = await _dbContext.CreateConnectionAsync())
+                {
+                    var parameters = new DynamicParameters();
+                    parameters.Add("@Email", loginDTO.UserName);                   
+
+                    Person? results = await connection.QueryFirstOrDefaultAsync<Person>(UserSqlConstants.GetPersonByUserName, parameters, commandType: CommandType.StoredProcedure);
+
+                        PersonResponse dtoList = PersonResponseDTOConverter.ConvertToPerson(results);
+
+                        return dtoList;
+                    
+                }
+
+            }
+            catch (SqlException sqlException)
+            {
+
+                Console.WriteLine($"Error: {sqlException.Message}");
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            return null;
+        }
+
+
+
     }
 }

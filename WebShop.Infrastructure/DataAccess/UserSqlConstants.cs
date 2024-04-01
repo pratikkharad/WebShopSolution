@@ -14,6 +14,7 @@ namespace Shop.Infrastructure.DataAccess
         public const string GetUserPageNumberAndSize = "User_GetPageNumberAndSize";
         public const string GetSortedUsers = "User_GetSortedUsers";
         public const string GetTotalUserCount = "User_GetTotalUserCount";
+        public const string GetPersonByUserName = "User_GetPersonByUserName";
         
 
     }
