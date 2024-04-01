@@ -6,7 +6,6 @@ using System.Globalization;
 using WebShop.Core.Domain.Entities;
 using WebShop.Core.DTO;
 using WebShop.Core.ServiceContracts;
-using WebShop.Domain.Entities;
 using WebShopSolution.Models;
 
 namespace WebShopSolution.Controllers
@@ -26,7 +25,6 @@ namespace WebShopSolution.Controllers
 
         
         [HttpGet]
-        //public async Task<IActionResult> Index(string searchBy, string? searchString)
         public async Task<IActionResult> Index([FromQuery] TableModel tableFunctionality)
         {
             _breadcrumbService.SetCurrentPage("Home", "Index");
@@ -114,24 +112,13 @@ namespace WebShopSolution.Controllers
             return View(person);
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> SortPerson(TableModel tableModel)
-        //{
-        //    IEnumerable<PersonResponse> sortedPersons = null;
-        //    //var sortedPersons
-        //    try
-        //    {
-        //        sortedPersons = await _personGetterContracts.GetSortPersons(tableModel);
-        //    }
-        //    catch (Exception ex)
-        //    {
+        [HttpGet]
+        public IActionResult CreateUser()
+        {
 
-        //        _logger.LogError("Home page is failed");
-        //        return StatusCode(500, $"Internal server error: {ex.Message}");
-        //    }
+        }
 
-        //    return View("Index", sortedPersons);
-        //}
+        
 
       
     }
