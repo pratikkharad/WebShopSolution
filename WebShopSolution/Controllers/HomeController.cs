@@ -25,6 +25,7 @@ namespace WebShopSolution.Controllers
 
         
         [HttpGet]
+        [IgnoreAntiforgeryToken]
         public async Task<IActionResult> Index([FromQuery] TableModel tableFunctionality)
         {
             _breadcrumbService.SetCurrentPage("Home", "Index");
@@ -113,13 +114,21 @@ namespace WebShopSolution.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreateUser()
+        [IgnoreAntiforgeryToken]
+        public IActionResult AddUser()
         {
-
+            return View();
         }
 
-        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddUser([FromQuery] AddPerson addPerson)
+        {
+            return Json(new { success = true, message = "User Createion successful." });
+        }
 
-      
+
+
+
     }
 }
