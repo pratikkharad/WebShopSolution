@@ -15,9 +15,6 @@ function getCSRFToken() {
  */
 function sendPostRequest(url, data,  successCallback, errorCallback) {
    
-
-    
-
     $.ajax({
         url: window.location.href + url,
         type: 'POST',

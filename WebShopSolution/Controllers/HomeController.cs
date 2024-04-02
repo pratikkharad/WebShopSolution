@@ -6,6 +6,7 @@ using System.Globalization;
 using WebShop.Core.Domain.Entities;
 using WebShop.Core.DTO;
 using WebShop.Core.ServiceContracts;
+using WebShop.Core.Validators;
 using WebShopSolution.Models;
 
 namespace WebShopSolution.Controllers
@@ -115,15 +116,35 @@ namespace WebShopSolution.Controllers
 
         [HttpGet]
         [IgnoreAntiforgeryToken]
-        public IActionResult AddUser()
+        public async Task<IActionResult> AddUser()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddUser([FromQuery] AddPerson addPerson)
+        public async Task<IActionResult> AddUser([FromQuery] AddPerson addPersonModel)
         {
+            
+            var validationResult = await new AddPersonDtoValidator().ValidateAsync(addPersonModel);
+
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors);
+            }
+
+            try
+            {
+                var user = AddPerson.ToPerson(addPersonModel);
+
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "An error occurred while creating the user.");
+            }
+
             return Json(new { success = true, message = "User Createion successful." });
         }
 

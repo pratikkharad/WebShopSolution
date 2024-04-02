@@ -17,17 +17,20 @@ namespace WebShop.Core.DTO
         public string LastName { get; set; } = string.Empty;
         public DateTime? DateOfBirth { get; set; }
         [Required(ErrorMessage = "Email Name is required")]
+        [EmailAddress]
         public string Email { get; set; } = string.Empty;
         [Required(ErrorMessage = "Phone Number is required")]
         public string PhoneNumber { get; set; } = string.Empty;
 
-        public Person ToStudent()
+        public static Person ToPerson(AddPerson addPerson)
         {
             return new Person()
             {
-                FirstName = FirstName,
-                LastName = LastName
-
+                FirstName = addPerson.FirstName,
+                LastName = addPerson.LastName,
+                DateOfBirth = addPerson.DateOfBirth,
+                Email = addPerson.Email,
+                PhoneNumber = addPerson.PhoneNumber
             };
         }
     }
